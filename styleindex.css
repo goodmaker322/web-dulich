@@ -513,3 +513,105 @@ body {
         padding: 8px 0 4px 0;
     }
 }
+
+/* About page zigzag layout */
+.about-main {
+    max-width: 900px;
+    margin: 0 auto 32px auto;
+    padding: 24px 8px;
+}
+.about-section {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+.about-section.reverse {
+    flex-direction: row-reverse;
+}
+.about-img {
+    flex: 1 1 220px;
+    max-width: 320px;
+}
+.about-img img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.about-content {
+    flex: 2 1 320px;
+}
+.about-content h2 {
+    color: var(--primary, #1abc9c);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.about-content p {
+    font-size: 1.08rem;
+    color: #444;
+    line-height: 1.7;
+}
+
+/* Responsive for mobile */
+@media (max-width: 700px) {
+    .about-section,
+    .about-section.reverse {
+        flex-direction: column !important;
+        gap: 16px;
+        text-align: center;
+    }
+    .about-img {
+        max-width: 100%;
+    }
+}
+.about-section,
+.about-section.reverse {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(.4,0,.2,1), transform 1s cubic-bezier(.4,0,.2,1);
+}
+
+.about-section.visible,
+.about-section.reverse.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.flower {
+    position: fixed;
+    top: -50px;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.85;
+    animation: flower-fall linear forwards;
+}
+
+@keyframes flower-fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.7;
+    }
+}
+/* Chỉ áp dụng font mềm mại cho phần main.about-main và nội dung bên trong */
+.about-main.soft-font,
+.about-main.soft-font p,
+.about-main.soft-font li,
+.about-main.soft-font .about-content {
+    font-family: 'Quicksand', Arial, sans-serif;
+}
+
+.about-main.soft-font .about-content h2 {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 1.7rem;
+    color: #00b894;
+}
+
+.about-main.soft-font h1,
+.about-main.soft-font .header h1 {
+    font-family: 'Pacifico', cursive;
+    color: #00b894;
+    font-size: 2.1rem;
+}
