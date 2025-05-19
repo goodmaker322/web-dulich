@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support - My Website</title>
+    <title>Hỗ Trợ Khách Hàng - Web Du Lịch</title>
     <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>Support</h1>
+            <h1>Hỗ Trợ Khách Hàng</h1>
         </header>
         <nav class="nav">
             <ul class="nav-list">
@@ -20,31 +21,43 @@
                 <li><a href="login.html">Đăng Nhập</a></li>
             </ul>
         </nav>
-        <main class="main-content">
-            <h2>Hỗ Trợ Khách Hàng</h2>
-            <section class="faq">
-                <h3>Câu Hỏi Thường Gặp (FAQs)</h3>
-                <ul>
-                    <li><strong>Câu hỏi 1:</strong> Làm thế nào để đăng ký tài khoản?</li>
-                    <li>Trả lời: Bạn có thể đăng ký tài khoản bằng cách nhấp vào nút "Đăng Nhập" và chọn "Đăng ký".</li>
-                    <li><strong>Câu hỏi 2:</strong> Tôi có thể thay đổi thông tin tài khoản của mình không?</li>
-                    <li>Trả lời: Có, bạn có thể thay đổi thông tin tài khoản trong phần "Cài đặt" sau khi đăng nhập.</li>
-                    <li><strong>Câu hỏi 3:</strong> Làm thế nào để liên hệ với bộ phận hỗ trợ?</li>
-                    <li>Trả lời: Bạn có thể liên hệ với chúng tôi qua email hoặc số hotline được cung cấp dưới đây.</li>
-                </ul>
+        <main class="support-main">
+            <section class="faq-list">
+                <h2>Các Vấn Đề Thường Gặp</h2>
+                <div class="faq-item" data-answer="Bạn có thể đăng ký tài khoản bằng cách nhấp vào nút 'Đăng Nhập' và chọn 'Đăng ký'.">
+                    <div class="faq-question">Làm thế nào để đăng ký tài khoản?</div>
+                </div>
+                <div class="faq-item" data-answer="Có, bạn có thể thay đổi thông tin tài khoản trong phần 'Cài đặt' sau khi đăng nhập.">
+                    <div class="faq-question">Tôi có thể thay đổi thông tin tài khoản của mình không?</div>
+                </div>
+                <div class="faq-item" data-answer="Bạn có thể liên hệ với chúng tôi qua email hoặc số hotline được cung cấp bên dưới.">
+                    <div class="faq-question">Làm thế nào để liên hệ với bộ phận hỗ trợ?</div>
+                </div>
             </section>
-            <section class="contact-info">
-                <h3>Thông Tin Liên Hệ</h3>
-                <p>Email: support@lowkeydangsuy.com</p>
-                <p>Hotline: 0123 456 789</p>
-            </section>
-            <section class="resources">
-                <h3>Tài Nguyên Hỗ Trợ</h3>
-                <p>Chúng tôi cung cấp nhiều tài nguyên hỗ trợ khác nhau để giúp bạn giải quyết vấn đề của mình. Vui lòng tham khảo các tài liệu hướng dẫn trên trang web của chúng tôi.</p>
+            <section class="support-form-section">
+                <h2>Các Vấn Đề Khác</h2>
+                <h4>Hãy để lại câu hỏi của bạn cho chúng tôi tại đây:   </h4>
+                <form class="support-form" id="supportForm">
+                    <div class="support-success" id="supportSuccess" style="display:none;">Câu hỏi của bạn đã được gửi! Chúng tôi sẽ phản hồi qua email sớm nhất.</div>
+                    <label for="email">Email của bạn *</label>
+                    <input type="email" id="email" name="email" required placeholder="Nhập email của bạn">
+                    <label for="question">Câu hỏi của bạn *</label>
+                    <textarea id="question" name="question" rows="4" required placeholder="Nhập nội dung câu hỏi"></textarea>
+                    <button type="submit">Gửi câu hỏi</button>
+                </form>
             </section>
         </main>
-        <footer class="footer">
-            <div class="footer-content">
+        <footer class="footer" >
+            <div class="footer-content" >
+                <div class="footer-section">
+                    <h4>Liên hệ</h4>
+                    <p>Email: support@lowkeydangsuy.com</p>
+                    <p>Hotline: 0123 456 789</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Địa chỉ</h4>
+                    <p>123 Đường Du Lịch, Quận Du Lịch , TP. Du Lịch</p>
+                </div>
                 <div class="footer-section">
                     <h4>Kết nối</h4>
                     <div class="footer-social">
@@ -58,6 +71,39 @@
                 &copy; 2025 by Lowkeydangsuy@2002. All rights reserved.
             </div>
         </footer>
+        <!-- Popup FAQ -->
+        <div id="faqPopup" class="faq-popup" style="display:none;">
+            <div class="faq-popup-content">
+                <span class="faq-popup-close" id="faqPopupClose">&times;</span>
+                <div class="faq-popup-question" id="faqPopupQuestion"></div>
+                <div class="faq-popup-answer" id="faqPopupAnswer"></div>
+            </div>
+        </div>
     </div>
+    <script>
+        // Popup FAQ logic
+        document.querySelectorAll('.faq-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                document.getElementById('faqPopupQuestion').textContent = this.querySelector('.faq-question').textContent;
+                document.getElementById('faqPopupAnswer').textContent = this.getAttribute('data-answer');
+                document.getElementById('faqPopup').style.display = 'flex';
+            });
+        });
+        document.getElementById('faqPopupClose').onclick = function() {
+            document.getElementById('faqPopup').style.display = 'none';
+        };
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('faqPopup')) {
+                document.getElementById('faqPopup').style.display = 'none';
+            }
+        };
+
+        // Xử lý gửi form hỗ trợ
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('supportSuccess').style.display = 'block';
+            this.reset();
+        });
+    </script>
 </body>
 </html>

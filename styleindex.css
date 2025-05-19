@@ -514,6 +514,8 @@ body {
     }
 }
 
+
+/* Css for About */
 /* About page zigzag layout */
 .about-main {
     max-width: 900px;
@@ -614,4 +616,231 @@ body {
     font-family: 'Pacifico', cursive;
     color: #00b894;
     font-size: 2.1rem;
+}
+.about-section-reverse {
+    flex-direction: row-reverse;
+}
+.about-title {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 1.7rem;
+    color: #00b894;
+    margin-bottom: 10px;
+}
+.about-text {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-size: 1.0rem;
+    color: #552b04;
+    line-height: 1.7;
+}
+
+/* Css for Servieces */
+
+.services-main {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 32px auto;
+    padding: 24px 8px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.services-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    font-size: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.services-table th, .services-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 10px;
+    text-align: left;
+    transition: background 0.2s;
+}
+.services-table th {
+    background: linear-gradient(90deg, #00b894 60%, #4ca69e 100%);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 1.07rem;
+}
+.services-table tr:nth-child(even) {
+    background: #f5fefd;
+}
+.services-table tr:hover td {
+    background: #eaf7f6;
+}
+.services-promo-condition {
+    display: block;
+    color: #636e72;
+    font-size: 0.95em;
+    margin-top: 2px;
+    font-style: italic;
+}
+
+/* Responsive table cho services */
+@media (max-width: 700px) {
+    .services-table, .services-table thead, .services-table tbody, .services-table th, .services-table td, .services-table tr {
+        display: block;
+        width: 100%;
+    }
+    .services-table thead {
+        display: none;
+    }
+    .services-table tr {
+        margin-bottom: 18px;
+        border-bottom: 2px solid #00b894;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(76,166,158,0.08);
+        background: #fff;
+    }
+    .services-table td {
+        border: none;
+        position: relative;
+        padding-left: 48%;
+        min-height: 36px;
+        background: #f9f9f9;
+        margin-bottom: 2px;
+    }
+    .services-table td:before {
+        position: absolute;
+        left: 12px;
+        top: 10px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #00b894;
+        font-size: 0.98em;
+    }
+    .services-table td:nth-child(1):before { content: "Khu vực"; }
+    .services-table td:nth-child(2):before { content: "Giá tham khảo (VNĐ)"; }
+    .services-table td:nth-child(3):before { content: "Đánh giá"; }
+    .services-table td:nth-child(4):before { content: "Khuyến mãi"; }
+}
+
+.services-title, .services-item h3{
+    
+    color: #00b894;
+}
+
+/* Css for Support */
+.support-main {
+    max-width: 700px;
+    margin: 0 auto 32px auto;
+    padding: 24px 8px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.faq-list h2{
+    margin-bottom: 32px;
+    color: #32746e;
+}
+.faq-item {
+    margin-bottom: 18px;
+}
+.faq-question {
+    font-weight: bold;
+    color: #00b894;
+    cursor: pointer;
+}
+.faq-answer {
+    display: none;
+    margin-top: 6px;
+    color: #444;
+}
+.faq-item.active .faq-answer {
+    display: block;
+}
+.support-form {
+    background: #f9f9f9;
+    padding: 18px 14px;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    margin-bottom: 24px;
+}
+.support-form label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.support-form-section h2  {
+    color: #32746e;
+    
+}
+.support-form input, .support-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.support-form button {
+    background: #00b894;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.support-form button:hover {
+    background: #019875;
+}
+.support-success {
+    color: #00b894;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.faq-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.25);
+    align-items: center;
+    justify-content: center;
+}
+.faq-popup-content {
+    background: #fff;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    padding: 28px 22px 18px 22px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+    position: relative;
+    animation: popup-fade-in 0.2s;
+}
+.faq-popup-close {
+    position: absolute;
+    top: 10px; right: 16px;
+    font-size: 1.7rem;
+    color: #a10707;
+    cursor: pointer;
+    font-weight: bold;
+}
+.faq-popup-question {
+    font-weight: bold;
+    color: #00b894;
+    font-size: 1.13rem;
+    margin-bottom: 10px;
+}
+.faq-popup-answer {
+    color: #444;
+    font-size: 1.04rem;
+    line-height: 1.6;
+}
+@keyframes popup-fade-in {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
 }
