@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,30 +80,12 @@
             </div>
         </div>
     </div>
+    <script src="support.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        // Popup FAQ logic
-        document.querySelectorAll('.faq-item').forEach(function(item) {
-            item.addEventListener('click', function() {
-                document.getElementById('faqPopupQuestion').textContent = this.querySelector('.faq-question').textContent;
-                document.getElementById('faqPopupAnswer').textContent = this.getAttribute('data-answer');
-                document.getElementById('faqPopup').style.display = 'flex';
-            });
-        });
-        document.getElementById('faqPopupClose').onclick = function() {
-            document.getElementById('faqPopup').style.display = 'none';
-        };
-        window.onclick = function(event) {
-            if (event.target === document.getElementById('faqPopup')) {
-                document.getElementById('faqPopup').style.display = 'none';
-            }
-        };
-
-        // Xử lý gửi form hỗ trợ
-        document.getElementById('supportForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('supportSuccess').style.display = 'block';
-            this.reset();
-        });
+        (function(){
+            emailjs.init("GpSPp29fB4ZmHjJDc");
+        })();
     </script>
 </body>
 </html>
