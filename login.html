@@ -22,7 +22,7 @@
         </nav>
         <main class="main-content">
             <h2>Đăng Nhập</h2>
-            <form action="#" method="post" class="login-form">
+            <form action="#" method="post" class="login-form" id="loginForm">
                 <div class="form-group">
                     <label for="username">Tên đăng nhập:</label>
                     <input type="text" id="username" name="username" required>
@@ -31,7 +31,13 @@
                     <label for="password">Mật khẩu:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
+                <div class="form-group">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Ghi nhớ đăng nhập</label>
+                </div>
                 <button type="submit">Đăng Nhập</button>
+                <button type="button" id="registerBtn">Đăng ký</button>
+                <button type="button" id="forgotBtn">Quên mật khẩu</button>
             </form>
         </main>
         <footer class="footer">
@@ -59,5 +65,136 @@
             </div>
         </footer>
     </div>
+
+    <!-- Popup Đăng ký -->
+    <div id="registerPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <span class="close" id="closeRegister">&times;</span>
+            <h3>Đăng ký tài khoản</h3>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regUsername">Tên đăng nhập:</label>
+                    <input type="text" id="regUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Mật khẩu:</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Quên mật khẩu -->
+    <div id="forgotPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <span class="close" id="closeForgot">&times;</span>
+            <h3>Quên mật khẩu</h3>
+            <form id="forgotForm">
+                <div class="form-group">
+                    <label for="forgotEmail">Email:</label>
+                    <input type="email" id="forgotEmail" required>
+                </div>
+                <button type="submit">Gửi yêu cầu</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Hiện popup
+        document.getElementById('registerBtn').onclick = function() {
+            document.getElementById('registerPopup').style.display = 'block';
+        };
+        document.getElementById('forgotBtn').onclick = function() {
+            document.getElementById('forgotPopup').style.display = 'block';
+            };
+        document.getElementById('closeRegister').onclick = function() {
+            document.getElementById('registerPopup').style.display = 'none';
+        };
+        document.getElementById('closeForgot').onclick = function() {
+            document.getElementById('forgotPopup').style.display = 'none';
+        };
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('registerPopup')) {
+                document.getElementById('registerPopup').style.display = 'none';
+            }
+            if (event.target === document.getElementById('forgotPopup')) {
+                document.getElementById('forgotPopup').style.display = 'none';
+            }
+        };
+
+        // Validate đăng nhập
+        document.getElementById('loginForm').onsubmit = function(e) {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            if (!username || !password) {
+                alert('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.');
+                e.preventDefault();
+            }
+        };
+
+        // Validate đăng ký
+        document.getElementById('registerForm').onsubmit = function(e) {
+            const username = document.getElementById('regUsername').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value.trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!username || !email || !password) {
+                alert('Vui lòng nhập đầy đủ thông tin.');
+                e.preventDefault();
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                alert('Email không hợp lệ.');
+                e.preventDefault();
+                return;
+            }
+            if (password.length < 6) {
+                alert('Mật khẩu phải có ít nhất 6 ký tự.');
+                e.preventDefault();
+                return;
+            }
+            alert('Đăng ký thành công (demo).');
+            e.preventDefault();
+            document.getElementById('registerPopup').style.display = 'none';
+        };
+
+        // Validate quên mật khẩu
+        document.getElementById('forgotForm').onsubmit = function(e) {
+            const email = document.getElementById('forgotEmail').value.trim();
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!email) {
+                alert('Vui lòng nhập email.');
+                e.preventDefault();
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                alert('Email không hợp lệ.');
+                e.preventDefault();
+                return;
+            }
+            alert('Yêu cầu đặt lại mật khẩu đã được gửi (demo).');
+            e.preventDefault();
+            document.getElementById('forgotPopup').style.display = 'none';
+        };
+    </script>
+
+    <!-- Thêm CSS popup nếu chưa có -->
+    <style>
+    .popup {
+        position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;
+    }
+    .popup-content {
+        background: #fff; padding: 30px 20px; border-radius: 8px; min-width: 320px; position: relative;
+    }
+    .close {
+        position: absolute; right: 10px; top: 10px; font-size: 22px; cursor: pointer;
+    }
+    </style>
 </body>
 </html>
